@@ -3,17 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <style>
-      html,
-      body {
-        min-height: 220px !important;
+      .skeleton {
+        min-height: 200px;
       }
     </style>
     <script src="https://unpkg.com/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
   </head>
   <body>
-    <h3>Test Widget</h3>
+    <div class="skeleton"></div>
     <script>
-      window.parent.postMessage({ iframeResizer: true, height: 220 }, "*");
+      window.parent.postMessage({ iframeResizer: true, height: 200 }, "*");
+      setTimeout(() => {
+        const h3 = document.createElement("h3");
+        h3.textContent = "Test Widget";
+        document.body.appendChild(h3);
+      }, 2000);
     </script>
   </body>
 </html>
