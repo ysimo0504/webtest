@@ -62,33 +62,17 @@
       }
     </style>
   </head>
+  <!-- index.html（你的嵌入页面） -->
   <body>
-    <div class="container">
-      <span class="emoji">✅</span>
-      <span class="text">这是一个测试 Widget，可以嵌入 Notion</span>
-    </div>
-
-    <!-- 简单的兼容性脚本，不进行 DOM 操作 -->
     <script>
-      // 确保页面在 iframe 中正常加载
-      document.addEventListener("DOMContentLoaded", function () {
-        // 向父页面发送准备就绪信号（如果需要的话）
-        if (window.parent && window.parent !== window) {
-          try {
-            // 使用 postMessage 而不是直接 DOM 操作
-            window.parent.postMessage(
-              {
-                type: "widget-ready",
-                height: document.body.scrollHeight,
-              },
-              "*"
-            );
-          } catch (e) {
-            // 忽略跨域错误
-            console.log("Widget loaded in iframe");
-          }
-        }
-      });
+      setTimeout(() => {
+        document.body.innerHTML = "<h1>Hello IFrame</h1>";
+        // 注意一定要引入这段
+        var script = document.createElement("script");
+        script.src =
+          "https://unpkg.com/iframe-resizer/js/iframeResizer.contentWindow.min.js";
+        document.body.appendChild(script);
+      }, 3000);
     </script>
   </body>
 </html>
