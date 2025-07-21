@@ -9,15 +9,14 @@
       body {
         margin: 0;
         padding: 0;
+        width: 100%;
+        height: 100%;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
           sans-serif;
         background: transparent;
         color: #333;
-        width: 100%;
-        height: 120px; /* 固定高度，避免动态调整引起的冲突 */
         overflow: hidden;
       }
-
       .container {
         padding: 20px;
         border: 2px dashed #ccc;
@@ -26,53 +25,42 @@
         font-size: 16px;
         background: #f8f9fa;
         margin: 8px;
-        height: calc(100% - 36px); /* 减去 margin 和 padding */
         box-sizing: border-box;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: all 0.2s ease;
+        min-height: 80px;
       }
-
       .container:hover {
         border-color: #007acc;
         background: #f0f8ff;
       }
-
       .emoji {
         font-size: 24px;
         margin-right: 8px;
       }
-
       .text {
         font-weight: 500;
         line-height: 1.4;
       }
-
-      /* 确保在 iframe 中正常显示 */
       @media (max-width: 768px) {
         .container {
           font-size: 14px;
           padding: 16px;
         }
-
         .emoji {
           font-size: 20px;
         }
       }
     </style>
   </head>
-  <!-- index.html（你的嵌入页面） -->
   <body>
-    <script>
-      setTimeout(() => {
-        document.body.innerHTML = "<h1>Hello IFrame</h1>";
-        // 注意一定要引入这段
-        var script = document.createElement("script");
-        script.src =
-          "https://unpkg.com/iframe-resizer/js/iframeResizer.contentWindow.min.js";
-        document.body.appendChild(script);
-      }, 3000);
-    </script>
+    <div class="container">
+      <span class="emoji">🚀</span>
+      <span class="text">Hello Notion Widget</span>
+    </div>
+    <!-- 立即加载 iframe-resizer，确保 Notion 能识别并支持缩放 -->
+    <script src="https://unpkg.com/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
   </body>
 </html>
