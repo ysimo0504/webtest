@@ -4,19 +4,18 @@
     <meta charset="UTF-8" />
     <style>
       .skeleton {
-        min-height: 200px;
+        height: 200px;
+        width: 200px;
       }
     </style>
     <script src="https://unpkg.com/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
   </head>
   <body>
-    <div class="skeleton"></div>
+    <div class="skeleton">Loading…</div>
     <script>
-      window.parent.postMessage({ iframeResizer: true, height: 200 }, "*");
       setTimeout(() => {
-        const h3 = document.createElement("h3");
-        h3.textContent = "Test Widget";
-        document.body.appendChild(h3);
+        document.querySelector(".skeleton").innerHTML =
+          "<h3>Test Widget111</h3>";
       }, 2000);
     </script>
   </body>
